@@ -1,0 +1,34 @@
+<?xml encoding="UTF-8"?>
+
+<!ELEMENT covid-eu (country_list,record_list)>
+
+<!ELEMENT country_list (continent)+>
+
+<!ELEMENT continent (country)+>
+<!ATTLIST continent
+  name ID #REQUIRED >
+  
+<!ELEMENT country (#PCDATA)>
+<!ATTLIST country
+  country-territory-code CDATA #REQUIRED
+  name CDATA #REQUIRED
+  population CDATA #REQUIRED
+  xml:id ID #REQUIRED
+  area NMTOKEN #IMPLIED
+  car_code NMTOKEN #IMPLIED >
+
+<!ELEMENT record_list (year)*>
+
+<!ELEMENT year (month)* >
+<!ATTLIST year no CDATA #REQUIRED >
+<!ELEMENT month (day)* >
+<!ATTLIST month no CDATA #REQUIRED >
+<!ELEMENT day (record)+ >
+<!ATTLIST day no CDATA #REQUIRED >
+
+<!ELEMENT record EMPTY>
+<!ATTLIST record
+  cases CDATA #REQUIRED
+  country IDREF #REQUIRED
+  cumulative-14-days-per-100000 CDATA #REQUIRED
+  deaths CDATA #REQUIRED>

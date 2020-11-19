@@ -1,0 +1,15 @@
+<?xml encoding="UTF-8"?>
+
+<!ELEMENT bilan-continents (continent)+>
+
+<!ELEMENT continent (month)+>
+<!ATTLIST continent
+  name NMTOKEN #REQUIRED
+  population CDATA #REQUIRED
+  area CDATA #REQUIRED >
+
+<!ELEMENT month EMPTY>
+<!ATTLIST month
+  cases CDATA #REQUIRED
+  deaths CDATA #REQUIRED
+  no NMTOKEN #REQUIRED>
