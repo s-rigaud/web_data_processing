@@ -3,9 +3,9 @@
     <xsl:output method="xml" indent="yes" doctype-system="info.dtd" version="1.0"/>
 
     <xsl:template match="/">
-        <bilan-continent>
+        <bilan-continents>
             <xsl:apply-templates select="/covid-eu/country_list/continent" />
-        </bilan-continent>
+        </bilan-continents>
     </xsl:template>
 
     <xsl:template match="continent">
@@ -22,11 +22,11 @@
             name="records"
             select="/covid-eu/record_list/year[@no = current()/../@no]/month[@no = current()/@no]/day/record[@country = $country_ids]"
         />
-        
+
         <month
             no="{concat(../@no, '-', @no)}"
             cases="{sum($records/@cases)}"
-            death="{sum($records/@deaths)}"
+            deaths="{sum($records/@deaths)}"
         />
     </xsl:template>
 
