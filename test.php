@@ -7,10 +7,9 @@ class Continent{
 	private $area;
 	private $population;
 	private $countryIds;
-	private $monthlyRecords;
+	public $monthlyRecords;
 
 	function __construct($name) {
-		parent::__construct();
 		$this->name = $name;
 		$this->area = 0;
 		$this->population = 0;
@@ -31,6 +30,27 @@ class Continent{
 
 	function getCountryIds(){
 		return $this->countryIds;
+	}
+
+	function addMonthlyRecords(string $monthYear, int $cases, int $deaths){
+		$this->monthlyRecords[$monthYear]["cases"] += $cases;
+		$this->monthlyRecords[$monthYear]["deaths"] += $deaths;
+	}
+
+	function getMonthlyRecords(){
+		return $this->monthlyRecords;
+	}
+
+	function getName(){
+		return $this->name;
+	}
+
+	function getPopulation(){
+		return $this->population;
+	}
+
+	function getArea(){
+		return $this->area;
 	}
 }
 
@@ -66,17 +86,20 @@ class CovidParser extends DefaultHandler {
 		echo '</bilan-continents>\n';
 	}
 
-	function characters(string $txt) {}
+	function characters($txt) {}
 
-	function startElement(string $nom, array $att) {
+	function startElement($nom, $att) {
 		switch ($nom) {
 			case 'continent':
-				$lastContinent = Continent($att["name"]);
-				$continents[] = $lastContinent;
+				$this->lastContinent = new Continent($att["name"]);
+				$this->continents[] = $this->lastContinent;
 				break;
 
 			case 'country':
-				$this->lastContinent->incrementArea($att["area"]);
+				print_r( isset($att["area"]));
+				if (isset($att["area"])){
+					$this->lastContinent->incrementArea($att["area"]);
+				}
 				$this->lastContinent->incrementPopulation($att["population"]);
 				$this->lastContinent->addCountryId($att["xml:id"]);
 				break;
@@ -91,20 +114,19 @@ class CovidParser extends DefaultHandler {
 
 			case 'record':
 				$concernedContinent = $this->getContinentByCountryId($att['country']);
-				if (! array_key_exists($this->currentKeyYearMonth, $concernedContinent)){
-					$concernedContinent[$this->currentKeyYearMonth] = array("cases" => 0, "deaths" => 0);
+				if (! array_key_exists($this->currentKeyYearMonth, $concernedContinent->monthlyRecords)){
+					$concernedContinent->monthlyRecords[$this->currentKeyYearMonth] = array("cases" => 0, "deaths" => 0);
 				}
-				$concernedContinent[$this->currentKeyYearMonth]["cases"] += $att["cases"];
-				$concernedContinent[$this->currentKeyYearMonth]["deaths"] += $att["deaths"];
+				$concernedContinent->addMonthlyRecords($this->currentKeyYearMonth, $att["cases"], $att["deaths"]);
 				break;
 
 			default:
-				echo "$nom not handled in start element";
+				//echo "$nom not handled in start element";
 				break;
 		}
 	}
 
-	function getContinentByCountryId(string $countryId){
+	function getContinentByCountryId($countryId){
 		foreach($this->continents as $continent){
 			if(in_array($countryId, $continent->getCountryIds())){
 				return $continent;
@@ -112,11 +134,11 @@ class CovidParser extends DefaultHandler {
 		}
 	}
 
-	function endElement(string $nom) {
+	function endElement($nom) {
 		switch ($nom) {
 
 			default:
-				echo "$nom not handled in end element";
+				//echo "$nom not handled in end element";
 				break;
 		}
 	}

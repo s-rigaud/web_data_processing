@@ -11,6 +11,7 @@
     <xsl:template match="continent">
         <continent name="{@name}" population="{sum(./country/@population)}" area="{sum(./country/@area)}">
             <xsl:apply-templates select="/covid-eu/record_list/year/month">
+                <xsl:sort select="concat(../@no, '-', ./@no)" />
                 <xsl:with-param name="country_ids" select="./country/@xml:id"/>
             </xsl:apply-templates>
         </continent>

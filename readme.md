@@ -1,9 +1,9 @@
-java -jar saxon9he.jar -xsl:test.xsl -s:covid-tp.xml > info_xsl_process.xml
-time //
-xmldiff info.xml info_xsl_process.xml
+## Web des données - TP
 
-php test.php
-time //
+###### Author
 
-sudo apt install python3-pip
-pip3 install xmldiff
+Samuel Rigaud & Gaetan Pellerin
+
+###### Project
+
+The main goal of this work is to exploit provided Covid19 XML data structure with XSLT, SAX & Dom and to find the best suitable process in term of time 

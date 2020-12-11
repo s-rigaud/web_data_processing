@@ -3,87 +3,87 @@
   SYSTEM "info.dtd">
 <bilan-continents>
    <continent name="Asia" population="4.542059903E9" area="3.08063076E7">
-      <month no="2020-11" cases="954814" deaths="16183"/>
-      <month no="2020-10" cases="3.004369E6" deaths="47999"/>
-      <month no="2020-09" cases="3.512145E6" deaths="51806"/>
-      <month no="2020-08" cases="2.799266E6" deaths="45643"/>
-      <month no="2020-07" cases="1.929728E6" deaths="39033"/>
-      <month no="2020-06" cases="1.119998E6" deaths="25129"/>
-      <month no="2020-05" cases="592831" deaths="11862"/>
-      <month no="2020-04" cases="333821" deaths="11321"/>
-      <month no="2020-03" cases="85871" deaths="3990"/>
-      <month no="2020-02" cases="73470" deaths="2679"/>
-      <month no="2020-01" cases="9766" deaths="213"/>
       <month no="2019-12" cases="27" deaths="0"/>
+      <month no="2020-01" cases="9766" deaths="213"/>
+      <month no="2020-02" cases="73470" deaths="2679"/>
+      <month no="2020-03" cases="85871" deaths="3990"/>
+      <month no="2020-04" cases="333821" deaths="11321"/>
+      <month no="2020-05" cases="592831" deaths="11862"/>
+      <month no="2020-06" cases="1.119998E6" deaths="25129"/>
+      <month no="2020-07" cases="1.929728E6" deaths="39033"/>
+      <month no="2020-08" cases="2.799266E6" deaths="45643"/>
+      <month no="2020-09" cases="3.512145E6" deaths="51806"/>
+      <month no="2020-10" cases="3.004369E6" deaths="47999"/>
+      <month no="2020-11" cases="954814" deaths="16183"/>
    </continent>
    <continent name="Europe" population="7.66212338E8" area="2.316130284E7">
-      <month no="2020-11" cases="2.975928E6" deaths="39082"/>
-      <month no="2020-10" cases="4.812004E6" deaths="42505"/>
-      <month no="2020-09" cases="1.429338E6" deaths="14654"/>
-      <month no="2020-08" cases="772080" deaths="10085"/>
-      <month no="2020-07" cases="486132" deaths="10732"/>
-      <month no="2020-06" cases="480790" deaths="15973"/>
-      <month no="2020-05" cases="623098" deaths="38863"/>
-      <month no="2020-04" cases="857419" deaths="105434"/>
-      <month no="2020-03" cases="437423" deaths="27943"/>
-      <month no="2020-02" cases="1139" deaths="23"/>
-      <month no="2020-01" cases="15" deaths="0"/>
       <month no="2019-12" cases="0" deaths="0"/>
+      <month no="2020-01" cases="15" deaths="0"/>
+      <month no="2020-02" cases="1139" deaths="23"/>
+      <month no="2020-03" cases="437423" deaths="27943"/>
+      <month no="2020-04" cases="857419" deaths="105434"/>
+      <month no="2020-05" cases="623098" deaths="38863"/>
+      <month no="2020-06" cases="480790" deaths="15973"/>
+      <month no="2020-07" cases="486132" deaths="10732"/>
+      <month no="2020-08" cases="772080" deaths="10085"/>
+      <month no="2020-09" cases="1.429338E6" deaths="14654"/>
+      <month no="2020-10" cases="4.812004E6" deaths="42505"/>
+      <month no="2020-11" cases="2.975928E6" deaths="39082"/>
    </continent>
    <continent name="Africa" population="1.30690303E9" area="3.0334283E7">
-      <month no="2020-11" cases="128655" deaths="3259"/>
-      <month no="2020-10" cases="302274" deaths="7015"/>
-      <month no="2020-09" cases="228136" deaths="6088"/>
-      <month no="2020-08" cases="336450" deaths="10274"/>
-      <month no="2020-07" cases="516291" deaths="9433"/>
-      <month no="2020-06" cases="251822" deaths="5807"/>
-      <month no="2020-05" cases="104887" deaths="2480"/>
-      <month no="2020-04" cases="31598" deaths="1425"/>
-      <month no="2020-03" cases="5134" deaths="166"/>
-      <month no="2020-02" cases="3" deaths="0"/>
-      <month no="2020-01" cases="0" deaths="0"/>
       <month no="2019-12" cases="0" deaths="0"/>
+      <month no="2020-01" cases="0" deaths="0"/>
+      <month no="2020-02" cases="3" deaths="0"/>
+      <month no="2020-03" cases="5134" deaths="166"/>
+      <month no="2020-04" cases="31598" deaths="1425"/>
+      <month no="2020-05" cases="104887" deaths="2480"/>
+      <month no="2020-06" cases="251822" deaths="5807"/>
+      <month no="2020-07" cases="516291" deaths="9433"/>
+      <month no="2020-08" cases="336450" deaths="10274"/>
+      <month no="2020-09" cases="228136" deaths="6088"/>
+      <month no="2020-10" cases="302274" deaths="7015"/>
+      <month no="2020-11" cases="128655" deaths="3259"/>
    </continent>
    <continent name="America" population="1.013601796E9" area="4.19801063E7">
-      <month no="2020-11" cases="1.762451E6" deaths="25609"/>
-      <month no="2020-10" cases="3.821622E6" deaths="83443"/>
-      <month no="2020-09" cases="3.282705E6" deaths="89303"/>
-      <month no="2020-08" cases="4.044723E6" deaths="112185"/>
-      <month no="2020-07" cases="4.126614E6" deaths="106910"/>
-      <month no="2020-06" cases="2.396208E6" deaths="87158"/>
-      <month no="2020-05" cases="1.570678E6" deaths="86923"/>
-      <month no="2020-04" cases="1.113933E6" deaths="70904"/>
-      <month no="2020-03" cases="190000" deaths="3687"/>
-      <month no="2020-02" cases="86" deaths="0"/>
-      <month no="2020-01" cases="11" deaths="0"/>
       <month no="2019-12" cases="0" deaths="0"/>
+      <month no="2020-01" cases="11" deaths="0"/>
+      <month no="2020-02" cases="86" deaths="0"/>
+      <month no="2020-03" cases="190000" deaths="3687"/>
+      <month no="2020-04" cases="1.113933E6" deaths="70904"/>
+      <month no="2020-05" cases="1.570678E6" deaths="86923"/>
+      <month no="2020-06" cases="2.396208E6" deaths="87158"/>
+      <month no="2020-07" cases="4.126614E6" deaths="106910"/>
+      <month no="2020-08" cases="4.044723E6" deaths="112185"/>
+      <month no="2020-09" cases="3.282705E6" deaths="89303"/>
+      <month no="2020-10" cases="3.821622E6" deaths="83443"/>
+      <month no="2020-11" cases="1.762451E6" deaths="25609"/>
    </continent>
    <continent name="Oceania" population="4.146738E7" area="8.5085783E6">
-      <month no="2020-11" cases="4547" deaths="32"/>
-      <month no="2020-10" cases="8564" deaths="79"/>
-      <month no="2020-09" cases="3925" deaths="320"/>
-      <month no="2020-08" cases="11296" deaths="432"/>
-      <month no="2020-07" cases="8750" deaths="87"/>
-      <month no="2020-06" cases="705" deaths="2"/>
-      <month no="2020-05" cases="503" deaths="15"/>
-      <month no="2020-04" cases="2812" deaths="95"/>
-      <month no="2020-03" cases="5298" deaths="21"/>
-      <month no="2020-02" cases="19" deaths="0"/>
-      <month no="2020-01" cases="7" deaths="0"/>
       <month no="2019-12" cases="0" deaths="0"/>
+      <month no="2020-01" cases="7" deaths="0"/>
+      <month no="2020-02" cases="19" deaths="0"/>
+      <month no="2020-03" cases="5298" deaths="21"/>
+      <month no="2020-04" cases="2812" deaths="95"/>
+      <month no="2020-05" cases="503" deaths="15"/>
+      <month no="2020-06" cases="705" deaths="2"/>
+      <month no="2020-07" cases="8750" deaths="87"/>
+      <month no="2020-08" cases="11296" deaths="432"/>
+      <month no="2020-09" cases="3925" deaths="320"/>
+      <month no="2020-10" cases="8564" deaths="79"/>
+      <month no="2020-11" cases="4547" deaths="32"/>
    </continent>
    <continent name="Other" population="0" area="0">
-      <month no="2020-11" cases="0" deaths="0"/>
-      <month no="2020-10" cases="0" deaths="0"/>
-      <month no="2020-09" cases="0" deaths="0"/>
-      <month no="2020-08" cases="0" deaths="0"/>
-      <month no="2020-07" cases="0" deaths="0"/>
-      <month no="2020-06" cases="0" deaths="0"/>
-      <month no="2020-05" cases="0" deaths="0"/>
-      <month no="2020-04" cases="0" deaths="0"/>
-      <month no="2020-03" cases="-9" deaths="1"/>
-      <month no="2020-02" cases="705" deaths="6"/>
-      <month no="2020-01" cases="0" deaths="0"/>
       <month no="2019-12" cases="0" deaths="0"/>
+      <month no="2020-01" cases="0" deaths="0"/>
+      <month no="2020-02" cases="705" deaths="6"/>
+      <month no="2020-03" cases="-9" deaths="1"/>
+      <month no="2020-04" cases="0" deaths="0"/>
+      <month no="2020-05" cases="0" deaths="0"/>
+      <month no="2020-06" cases="0" deaths="0"/>
+      <month no="2020-07" cases="0" deaths="0"/>
+      <month no="2020-08" cases="0" deaths="0"/>
+      <month no="2020-09" cases="0" deaths="0"/>
+      <month no="2020-10" cases="0" deaths="0"/>
+      <month no="2020-11" cases="0" deaths="0"/>
    </continent>
 </bilan-continents>
