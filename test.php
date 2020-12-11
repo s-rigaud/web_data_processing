@@ -33,6 +33,9 @@ class Continent{
 	}
 
 	function addMonthlyRecords(string $monthYear, int $cases, int $deaths){
+		if (! array_key_exists($monthYear, $this->monthlyRecords)){
+			$this->monthlyRecords[$monthYear] = array("cases" => 0, "deaths" => 0);
+		}
 		$this->monthlyRecords[$monthYear]["cases"] += $cases;
 		$this->monthlyRecords[$monthYear]["deaths"] += $deaths;
 	}
@@ -71,17 +74,17 @@ class CovidParser extends DefaultHandler {
 
 	public function startDocument() {
 		echo '<?xml version="1.0" encoding="UTF-8"?>\n';
-		echo '<!DOCTYPE bilan-continents SYSTEM "info.dtd">\n';
+		echo '<!DOCTYPE bilan-continents\n  SYSTEM "info.dtd">\n';
 		echo '<bilan-continents>\n';
 	}
 
 	function endDocument() {
 		foreach($this->continents as $continent){
-			echo '<continent name="' . $continent->name . '" population="' . $continent->population . '" area="' . $continent->area . '">';
-			foreach($continent->records as $keyYearMonth => $deathAndCases){
-				echo '<month no="' . $keyYearMonth . '" cases="' . $deathAndCases["cases"] . '" deaths="' . $deathAndCases["deaths"] . '"/>';
+			echo '   <continent name="' . $continent->getName() . '" population="' . $continent->getPopulation() . '" area="' . $continent->getArea() . '">\n';
+			foreach(array_reverse($continent->getMonthlyRecords()) as $keyYearMonth => $deathAndCases){
+				echo '      <month no="' . $keyYearMonth . '" cases="' . $deathAndCases["cases"] . '" deaths="' . $deathAndCases["deaths"] . '"/>\n';
 			}
-			echo '<continent/>';
+			echo '  <continent/>\n';
 		}
 		echo '</bilan-continents>\n';
 	}
@@ -96,7 +99,6 @@ class CovidParser extends DefaultHandler {
 				break;
 
 			case 'country':
-				print_r( isset($att["area"]));
 				if (isset($att["area"])){
 					$this->lastContinent->incrementArea($att["area"]);
 				}
@@ -109,14 +111,11 @@ class CovidParser extends DefaultHandler {
 				break;
 
 			case 'month':
-				$this->currentKeyYearMonth = $this->currentYear.' '.$att["no"];
+				$this->currentKeyYearMonth = $this->currentYear.'-'.$att["no"];
 				break;
 
 			case 'record':
 				$concernedContinent = $this->getContinentByCountryId($att['country']);
-				if (! array_key_exists($this->currentKeyYearMonth, $concernedContinent->monthlyRecords)){
-					$concernedContinent->monthlyRecords[$this->currentKeyYearMonth] = array("cases" => 0, "deaths" => 0);
-				}
 				$concernedContinent->addMonthlyRecords($this->currentKeyYearMonth, $att["cases"], $att["deaths"]);
 				break;
 
