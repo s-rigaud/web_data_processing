@@ -1,4 +1,7 @@
 <?php
+
+require 'utils.php';
+
 header('Content-type: text/xml; Encoding: utf-8');
 include('Sax4php.php');
 
@@ -72,21 +75,30 @@ class CovidParser extends DefaultHandler {
 		$this->continents = array();
 	}
 
-	public function startDocument() {
-		echo '<?xml version="1.0" encoding="UTF-8"?>\n';
-		echo '<!DOCTYPE bilan-continents\n  SYSTEM "info.dtd">\n';
-		echo '<bilan-continents>\n';
+	function getContinentByCountryId(string $countryId){
+		/* Return the continent having the $countryId in the country ids populated it*/
+		foreach($this->continents as $continent){
+			if(in_array($countryId, $continent->getCountryIds())){
+				return $continent;
+			}
+		}
 	}
 
+	/* Classic SAX methods down */
+	public function startDocument() {
+		echo '<?xml version="1.0" encoding="UTF-8"?>'."\n".'<!DOCTYPE bilan-continents'."\n".'  SYSTEM "info.dtd">'."\n".'<bilan-continents>'."\n";
+	}
+
+	/* Basically printing everything which has been stored and save in memory for now (continents and monthly cases/deaths) */
 	function endDocument() {
 		foreach($this->continents as $continent){
-			echo '   <continent name="' . $continent->getName() . '" population="' . $continent->getPopulation() . '" area="' . $continent->getArea() . '">\n';
+			echo '   <continent name="' . $continent->getName() . '" population="' . toExpoFormat($continent->getPopulation()) . '" area="' . toExpoFormat($continent->getArea()) . '">'."\n";
 			foreach(array_reverse($continent->getMonthlyRecords()) as $keyYearMonth => $deathAndCases){
-				echo '      <month no="' . $keyYearMonth . '" cases="' . $deathAndCases["cases"] . '" deaths="' . $deathAndCases["deaths"] . '"/>\n';
+				echo '      <month no="' . $keyYearMonth . '" cases="' . toExpoFormat($deathAndCases["cases"]) . '" deaths="' . toExpoFormat($deathAndCases["deaths"]) . '"/>'."\n";
 			}
-			echo '  <continent/>\n';
+			echo "   </continent>\n";
 		}
-		echo '</bilan-continents>\n';
+		echo "</bilan-continents>\n";
 	}
 
 	function characters($txt) {}
@@ -99,11 +111,11 @@ class CovidParser extends DefaultHandler {
 				break;
 
 			case 'country':
+				$this->lastContinent->addCountryId($att["xml:id"]);
+				$this->lastContinent->incrementPopulation($att["population"]);
 				if (isset($att["area"])){
 					$this->lastContinent->incrementArea($att["area"]);
 				}
-				$this->lastContinent->incrementPopulation($att["population"]);
-				$this->lastContinent->addCountryId($att["xml:id"]);
 				break;
 
 			case 'year':
@@ -111,7 +123,7 @@ class CovidParser extends DefaultHandler {
 				break;
 
 			case 'month':
-				$this->currentKeyYearMonth = $this->currentYear.'-'.$att["no"];
+				$this->currentKeyYearMonth = $this->currentYear . '-' . $att["no"];
 				break;
 
 			case 'record':
@@ -122,14 +134,6 @@ class CovidParser extends DefaultHandler {
 			default:
 				//echo "$nom not handled in start element";
 				break;
-		}
-	}
-
-	function getContinentByCountryId($countryId){
-		foreach($this->continents as $continent){
-			if(in_array($countryId, $continent->getCountryIds())){
-				return $continent;
-			}
 		}
 	}
 
